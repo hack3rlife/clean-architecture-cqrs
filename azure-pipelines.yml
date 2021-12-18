@@ -13,5 +13,40 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: Restore Packages
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+- task: DotNetCoreCLI@2
+  displayName: Building Solution
+  inputs:
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: Executing Unit Testing
+  inputs:
+    command: test
+    projects: '**/*UnitTest/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+    publishTestResults: true
+- task: DotNetCoreCLI@2
+  displayName: Executing Integration Tests
+  inputs:
+    command: test
+    projects: '**/*IntegrationTests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+    publishTestResults: true    
+
+- task: DotNetCoreCLI@2
+  displayName: Executing End to End Tests
+  inputs:
+    command: test
+    projects: '**/*EndToEndTests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+    publishTestResults: true    
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
