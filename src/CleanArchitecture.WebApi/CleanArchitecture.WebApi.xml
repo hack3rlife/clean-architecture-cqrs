@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CleanArchitecture.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:CleanArchitecture.WebApi.Controllers.ApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CleanArchitecture.WebApi.Controllers.BlogsController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BlogsController.#ctor(MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BlogsController.Get(CleanArchitecture.Application.Features.Blogs.Handlers.Queries.GetAll.GetBlogsRequestQuery)">
+            <summary>
+            Gets a list of blogs
+            </summary>
+            <response code="200">Returns a list of existing blogs</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BlogsController.Get(CleanArchitecture.Application.Features.Blogs.Handlers.Queries.GetBy.GetByBlogIdRequestQuery)">
+            <summary>
+            Gets a single blog details
+            </summary>
+            <param name="getByBlogQuery">Blog's guid</param>
+            <response code="200">When a valid <see cref="T:System.Guid"/> value is passed, the related Blog details will be returned.</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <response code="404">When the provided <see cref="T:System.Guid"/> does not exist or is not related any <see cref="T:CleanArchitecture.Domain.Entities.Blog"/> in the database.</response>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BlogsController.Post(CleanArchitecture.Application.Features.Blogs.Handlers.Commands.Add.AddBlogRequestCommand)">
+            <summary>
+            Adds a new blog
+            </summary>
+            <param name="addBlogCommand"></param>
+            <response code="201">When the blog is added successfully.</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BlogsController.Put(CleanArchitecture.Application.Features.Blogs.Handlers.Commands.Update.UpdateBlogRequestCommand)">
+            <summary>
+            Updates an existing blog
+            </summary>
+            <param name="updateBlogCommand"></param>
+            <response code="204">When the blog is updated successfully.</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.BlogsController.Delete(CleanArchitecture.Application.Features.Blogs.Handlers.Commands.Delete.DeleteBlogRequestCommand)">
+            <summary>
+            Deletes an existing blog
+            </summary>
+            <param name="deleteBlogCommand"></param>
+            <response code="204">When the blog is deleted successfully.</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <returns></returns>
+        </member>
+        <member name="T:CleanArchitecture.WebApi.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
