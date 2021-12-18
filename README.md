@@ -1,7 +1,7 @@
 ﻿[[_TOC_]]
 
 # ASP .NET Core Web API Template
-This template for creating ASP .NET Core Web API Template was crated for the Monthly Engineering Workshops at hack3rlife.
+// TODO: Add description here
 
 # How the code is organized
 The solution is organized in the following way
