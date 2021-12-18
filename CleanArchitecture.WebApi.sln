@@ -12,19 +12,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Infrastructure", "src\CleanArchitecture.Infrastructure\CleanArchitecture.Infrastructure.csproj", "{AA54161E-C056-4894-918A-25464E82174C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Infrastructure", "src\CleanArchitecture.Infrastructure\CleanArchitecture.Infrastructure.csproj", "{AA54161E-C056-4894-918A-25464E82174C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.WebApi", "src\CleanArchitecture.WebApi\CleanArchitecture.WebApi.csproj", "{3715C149-220D-4351-863E-678F1A2FA054}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.WebApi", "src\CleanArchitecture.WebApi\CleanArchitecture.WebApi.csproj", "{3715C149-220D-4351-863E-678F1A2FA054}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Domain", "src\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj", "{8AE9A45B-BA31-4D65-9E11-E9ED9DD8B267}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Domain", "src\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj", "{8AE9A45B-BA31-4D65-9E11-E9ED9DD8B267}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Application", "src\CleanArchitecture.Application\CleanArchitecture.Application.csproj", "{3D302967-3C64-467A-A1F2-C531D97EF3A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Application", "src\CleanArchitecture.Application\CleanArchitecture.Application.csproj", "{3D302967-3C64-467A-A1F2-C531D97EF3A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Application.UnitTest", "tests\CleanArchitecture.Application.UnitTest\CleanArchitecture.Application.UnitTest.csproj", "{672FDA64-6724-4635-BB40-67B337DCDDDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Application.UnitTest", "tests\CleanArchitecture.Application.UnitTest\CleanArchitecture.Application.UnitTest.csproj", "{672FDA64-6724-4635-BB40-67B337DCDDDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Infra.IntegrationTests", "tests\CleanArchitecture.Infra.IntegrationTests\CleanArchitecture.Infra.IntegrationTests.csproj", "{E9AB2B69-D4C7-4A26-9284-8B1FD43FC885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Infra.IntegrationTests", "tests\CleanArchitecture.Infra.IntegrationTests\CleanArchitecture.Infra.IntegrationTests.csproj", "{E9AB2B69-D4C7-4A26-9284-8B1FD43FC885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.WebApi.EndToEndTests", "tests\CleanArchitecture.WebApi.EndToEndTests\CleanArchitecture.WebApi.EndToEndTests.csproj", "{CAE84333-4EA5-4B6F-B632-DCC7CCBF1393}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.WebApi.EndToEndTests", "tests\CleanArchitecture.WebApi.EndToEndTests\CleanArchitecture.WebApi.EndToEndTests.csproj", "{CAE84333-4EA5-4B6F-B632-DCC7CCBF1393}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F292EB1D-CEED-4D84-997E-442F69D78A85}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F7A8BFC3-C62C-4852-8A57-ABB7C30165A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{6881B831-8D9F-4730-8EB0-0A2CB20E6A14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,13 +71,16 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{AA54161E-C056-4894-918A-25464E82174C} = {B9318983-A5C3-4B91-99E4-07A34A25EC6A}
-		{3715C149-220D-4351-863E-678F1A2FA054} = {B9318983-A5C3-4B91-99E4-07A34A25EC6A}
-		{8AE9A45B-BA31-4D65-9E11-E9ED9DD8B267} = {B9318983-A5C3-4B91-99E4-07A34A25EC6A}
-		{3D302967-3C64-467A-A1F2-C531D97EF3A0} = {B9318983-A5C3-4B91-99E4-07A34A25EC6A}
+		{AA54161E-C056-4894-918A-25464E82174C} = {F7A8BFC3-C62C-4852-8A57-ABB7C30165A5}
+		{3715C149-220D-4351-863E-678F1A2FA054} = {6881B831-8D9F-4730-8EB0-0A2CB20E6A14}
+		{8AE9A45B-BA31-4D65-9E11-E9ED9DD8B267} = {F292EB1D-CEED-4D84-997E-442F69D78A85}
+		{3D302967-3C64-467A-A1F2-C531D97EF3A0} = {F292EB1D-CEED-4D84-997E-442F69D78A85}
 		{672FDA64-6724-4635-BB40-67B337DCDDDE} = {AE4424AD-13C8-4B68-95DB-2740E6C72644}
 		{E9AB2B69-D4C7-4A26-9284-8B1FD43FC885} = {AE4424AD-13C8-4B68-95DB-2740E6C72644}
 		{CAE84333-4EA5-4B6F-B632-DCC7CCBF1393} = {AE4424AD-13C8-4B68-95DB-2740E6C72644}
+		{F292EB1D-CEED-4D84-997E-442F69D78A85} = {B9318983-A5C3-4B91-99E4-07A34A25EC6A}
+		{F7A8BFC3-C62C-4852-8A57-ABB7C30165A5} = {B9318983-A5C3-4B91-99E4-07A34A25EC6A}
+		{6881B831-8D9F-4730-8EB0-0A2CB20E6A14} = {B9318983-A5C3-4B91-99E4-07A34A25EC6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47E0005C-B885-4026-8231-07867A323A43}

@@ -1,14 +1,14 @@
-﻿using CleanArchitecture.Application.Features.Blogs.Handlers.Commands.Add;
-using FluentAssertions;
-using Microsoft.Extensions.Logging;
-using Moq;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.Behaviors;
+using CleanArchitecture.Application.Features.Blogs.Handlers.Commands.Add;
+using FluentAssertions;
+using Microsoft.Extensions.Logging;
+using Moq;
 using Xunit;
 
-namespace CleanArchitecture.Application.UnitTest.Behaviours
+namespace CleanArchitecture.Application.UnitTest.Behaviors
 {
     public class LoggingBehaviorTests
     {

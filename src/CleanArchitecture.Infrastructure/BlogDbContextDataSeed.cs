@@ -1,11 +1,10 @@
-﻿using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CleanArchitecture.Domain.Entities;
 
-namespace io.hack3rlife.data
+namespace CleanArchitecture.Infrastructure
 {
     public static class BlogDbContextDataSeed
     {

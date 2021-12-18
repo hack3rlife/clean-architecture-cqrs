@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using CleanArchitecture.Infrastructure;
-using io.hack3rlife.data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
