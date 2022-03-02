@@ -72,6 +72,10 @@ namespace CleanArchitecture.Application.UnitTest.Features.Blogs.Commands.Delete
             // Assert
             await act.Should().ThrowAsync<NotFoundException>()
                 .WithMessage($"{nameof(Blog)} with guid ({deleteBlogCommand.BlogId}) was not found");
+
+            _mockBlogRepository.Verify(
+                x => x.DeleteAsync(It.Is<Blog>(b => b.BlogId == deleteBlogCommand.BlogId)),
+                Times.Never);
         }
     }
 }
