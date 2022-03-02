@@ -65,6 +65,52 @@
             <response code="400">When there is an error during the execution of the request.</response>
             <returns></returns>
         </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.PostsController.Get(CleanArchitecture.Application.Features.Posts.Handlers.Queries.GetAll.GetPostsQuery)">
+            <summary>
+            Gets a list of posts
+            </summary>
+            <response code="200">Returns a list of existing posts</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.PostsController.Get(CleanArchitecture.Application.Features.Posts.Handlers.Queries.GetBy.GetByPostIdQuery)">
+            <summary>
+            Gets a single post details
+            </summary>
+            <param name="query"></param>
+            <response code="200">When a valid <see cref="T:System.Guid"/> value is passed, the related Blog details will be returned.</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <response code="404">When the provided <see cref="T:System.Guid"/> does not exist or is not related any <see cref="T:CleanArchitecture.Domain.Entities.Blog"/> in the database.</response>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.PostsController.Post(CleanArchitecture.Application.Features.Posts.Handlers.Commands.Add.AddPostRequestCommand)">
+            <summary>
+            Adds a new post
+            </summary>
+            <param name="addPostCommand"></param>
+            <response code="201">When the post is added successfully.</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.PostsController.Put(CleanArchitecture.Application.Features.Posts.Handlers.Commands.Update.UpdatePostRequestCommand)">
+            <summary>
+            Updates an existing post
+            </summary>
+            <param name="post"></param>
+            <param name="updatePostCommand"></param>
+            <response code="204">When the post is updated successfully.</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArchitecture.WebApi.Controllers.PostsController.Delete(CleanArchitecture.Application.Features.Posts.Handlers.Commands.Delete.DeletePostRequestCommand)">
+            <summary>
+            Deletes an existing post
+            </summary>
+            <param name="deletePostCommand"></param>
+            <response code="204">When the post is deleted successfully.</response>
+            <response code="400">When there is an error during the execution of the request.</response>
+            <returns></returns>
+        </member>
         <member name="T:CleanArchitecture.WebApi.Program">
             <summary>
             

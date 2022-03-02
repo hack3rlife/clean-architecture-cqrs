@@ -75,7 +75,7 @@ namespace CleanArchitecture.Application.UnitTest.Features.Blogs.Queries.GetAll
             _mockBlogRepository.Verify(x => x.ListAllAsync(expectedSkip, take), Times.Once);
         }
 
-        [Theory(DisplayName = "GetBlogsQuery_WithInvalidSkip_UsesDefaultSkipValue")]
+        [Theory(DisplayName = "GetBlogsQuery_WithInvalidTake_UsesDefaultSkipValue")]
         [InlineData(0, 10)]
         [InlineData(-1, 10)]
         public async Task GetBlogsQuery_WithInvalidTake_UsesDefaultSkipValue(int actualTake, int expectedTake)
