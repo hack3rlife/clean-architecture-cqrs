@@ -11,6 +11,10 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  major: 1
+  minor: 0
+  patch: $(Build.BuildID)
+  buildVersion: $(major).$(minor).$(patch)
 
 steps:
 - task: DotNetCoreCLI@2
@@ -18,11 +22,13 @@ steps:
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
+
 - task: DotNetCoreCLI@2
   displayName: Building Solution
   inputs:
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+
 - task: DotNetCoreCLI@2
   displayName: Executing Unit Testing
   inputs:
@@ -30,6 +36,7 @@ steps:
     projects: '**/*UnitTest/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
     publishTestResults: true
+
 - task: DotNetCoreCLI@2
   displayName: Executing Integration Tests
   inputs:
@@ -44,9 +51,13 @@ steps:
     command: test
     projects: '**/*EndToEndTests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
-    publishTestResults: true    
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
+    publishTestResults: true   
+
+- task: DotNetCoreCLI@2
+  displayName: 'Zip Artifact to $(Build.ArtifactStagingDirectory)'
   inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
+    command: 'publish'
+    publishWebProjects: false
+    zipAfterPublish: true
+    projects: 'src/**/*.WebApi.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) -p:Version=$(buildVersion)'
