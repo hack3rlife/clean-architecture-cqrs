@@ -1,7 +1,5 @@
-﻿[[_TOC_]]
-
-# ASP .NET Core Web API Template
-// TODO: Add description here
+﻿# ASP .NET Core Web API Template
+TODO: Add description here
 
 # How the code is organized
 The solution is organized in the following way
