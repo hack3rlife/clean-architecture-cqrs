@@ -21,8 +21,8 @@ steps:
     awsCredentials: 'AWS_CONNECTION'
     regionName: 'us-west-1'
     stackName: 'BlogWebApiCqrs'
-    templateSource: 'url'
-    templateUrl: 'https://cf-templates-14k7ci0m6vv7i-us-west-1.s3.us-west-1.amazonaws.com/2022062owk-template11cxah8l4zmz'
+    templateSource: 'file'
+    templateFile: 'cloudformation-template.yml'
     templateParametersSource: 'inline'
     templateParameters: |
       - ParameterKey: AppName
