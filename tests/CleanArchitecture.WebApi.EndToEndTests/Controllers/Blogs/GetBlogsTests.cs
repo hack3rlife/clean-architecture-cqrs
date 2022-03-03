@@ -1,10 +1,10 @@
+using CleanArchitecture.Application.Features.Blogs.Handlers.Queries.GetAll;
+using CleanArchitecture.WebApi.EndToEndTests.Infrastructure;
+using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
-using CleanArchitecture.Domain.Entities;
-using FluentAssertions;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace CleanArchitecture.WebApi.EndToEndTests.Controllers.Blogs
@@ -13,28 +13,28 @@ namespace CleanArchitecture.WebApi.EndToEndTests.Controllers.Blogs
     public class GetBlogsTests : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
         private readonly CustomWebApplicationFactory<Startup> _factory;
-        private readonly HttpClient _client;
+        private readonly BlogServiceClient _blogServiceClient;
 
         public GetBlogsTests(CustomWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
-            _client = _factory.CreateClient();
+            _blogServiceClient = _factory.Services.GetRequiredService<BlogServiceClient>();
         }
 
         [Fact]
         public async Task Get_Blogs_Ok()
         {
             // Arrange
+            var getBlogsRequestQuery = new GetBlogsRequestQuery();
 
             // Act
-            var responseMessage = await _client.GetAsync("/api/blogs/");
-            var content = await responseMessage.Content.ReadAsStringAsync();
-
-            var blogs = JsonConvert.DeserializeObject<List<Blog>>(content);
+            var apiResponse = await _blogServiceClient.GetBlogs(getBlogsRequestQuery);
 
             // Assert
-            blogs.Should().BeOfType<List<Blog>>();
-            responseMessage.StatusCode.Should().Be(HttpStatusCode.OK);
+            apiResponse.Should().NotBeNull();
+            apiResponse.Result.Should().BeOfType<List<GetBlogsQueryResponse>>();
+            apiResponse.ProblemDetails.Should().BeNull();
+            apiResponse.StatusCode.Should().Be(HttpStatusCode.OK);
         }
     }
 }
