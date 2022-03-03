@@ -38,9 +38,7 @@ namespace CleanArchitecture.WebApi.EndToEndTests
                         {
                             //attach testserver handler to the httpclient so request doesn't fail when running locally
                             //https://lurumad.github.io/integration-tests-in-aspnet-core-signalr
-#if DEBUG
                             x.PrimaryHandler = Server.CreateHandler();
-#endif
                         })
                         .AddHttpMessageHandler<LoggingHandler>();
 
