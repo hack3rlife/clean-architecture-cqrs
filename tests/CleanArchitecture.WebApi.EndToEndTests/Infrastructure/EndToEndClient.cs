@@ -14,8 +14,8 @@ namespace CleanArchitecture.WebApi.EndToEndTests.Infrastructure
 
         public EndToEndClient(HttpClient httpClient, IConfiguration configuration)
         {
-            _httpClient = httpClient;
-            _configuration = configuration;
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
 
             var baseUri = _configuration.GetValue<string>("BlogWebAPI:BaseUrl");
 

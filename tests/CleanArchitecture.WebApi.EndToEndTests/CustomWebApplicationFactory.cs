@@ -26,7 +26,6 @@ namespace CleanArchitecture.WebApi.EndToEndTests
                 })
                 .ConfigureTestServices(testServices =>
                 {
-                    testServices.AddSingleton<IEndToEndClient, EndToEndClient>();
                     testServices.AddTransient<LoggingHandler>();
 
                     testServices
