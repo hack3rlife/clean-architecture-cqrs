@@ -1,0 +1,63 @@
+AWSTemplateFormatVersion: 2010-09-09
+Metadata:
+  'AWS::CloudFormation::Designer':
+    78495882-5416-4b7e-b809-83b6dfa032ea:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 760
+        'y': 140
+      z: 0
+      embeds: []
+      dependson:
+        - ba919e78-1afb-43a7-a3d7-cfa25359eab7
+        - afeab38d-fdf6-4293-87fb-62dfce7e3b73
+    afeab38d-fdf6-4293-87fb-62dfce7e3b73:
+      size:
+        width: 140
+        height: 130
+      position:
+        x: 590
+        'y': 130
+      z: 0
+      embeds: []
+Resources:
+  ApplicationConfiguration:
+    Type: 'AWS::ElasticBeanstalk::Application'
+    Properties:
+      ApplicationName: !Ref AppName
+      Description: AWS Elastic Beanstalk for .NET Core Services
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: afeab38d-fdf6-4293-87fb-62dfce7e3b73
+  DevelopmentEnvironmentConfiguration:
+    Type: 'AWS::ElasticBeanstalk::Environment'
+    Properties:
+      ApplicationName: !Ref ApplicationConfiguration
+      EnvironmentName: Development
+      CNAMEPrefix: BlogWebApiDev
+      OptionSettings:
+        - Namespace: 'aws:autoscaling:launchconfiguration'
+          OptionName: IamInstanceProfile
+          Value: aws-elasticbeanstalk-ec2-role
+        - Namespace: 'aws:elasticbeanstalk:environment'
+          OptionName: EnvironmentType
+          Value: SingleInstance
+        - Namespace: 'aws:autoscaling:launchconfiguration'
+          OptionName: InstanceType
+          Value: t2.micro
+      SolutionStackName: 64bit Amazon Linux 2 v2.2.11 running .NET Core
+      Tier:
+        Name: WebServer
+        Type: Standard
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 78495882-5416-4b7e-b809-83b6dfa032ea
+    DependsOn:
+      - ApplicationConfiguration
+Parameters:
+  AppName:
+    Description: The ApplicationName (e.g. BlogWebAPI)
+    Type: String
+    Default: BlogWebAPI
