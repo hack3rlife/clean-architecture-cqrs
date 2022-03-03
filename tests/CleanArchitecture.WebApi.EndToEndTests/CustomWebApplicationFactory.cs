@@ -29,9 +29,6 @@ namespace CleanArchitecture.WebApi.EndToEndTests
                     testServices.AddSingleton<IEndToEndClient, EndToEndClient>();
                     testServices.AddTransient<LoggingHandler>();
 
-                    testServices.AddSingleton<EndToEndClientFactory>();
-                    testServices.AddSingleton<BlogServiceClient>();
-
                     testServices
                         .AddHttpClient<EndToEndClient>()
                         .ConfigureHttpMessageHandlerBuilder(x =>
@@ -41,6 +38,10 @@ namespace CleanArchitecture.WebApi.EndToEndTests
                             x.PrimaryHandler = Server.CreateHandler();
                         })
                         .AddHttpMessageHandler<LoggingHandler>();
+
+                    
+                    testServices.AddSingleton<EndToEndClientFactory>();
+                    testServices.AddSingleton<BlogServiceClient>();
 
                     var guid = Guid.NewGuid().ToString();
                     testServices.AddDbContext<BlogDbContext>(c => c.UseInMemoryDatabase(guid).EnableDetailedErrors());
