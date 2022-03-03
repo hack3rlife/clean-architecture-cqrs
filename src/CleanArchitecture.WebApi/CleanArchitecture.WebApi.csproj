@@ -8,9 +8,9 @@
     <StartupObject></StartupObject>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>CleanArchitecture.WebApi.xml</DocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="10.2.3" />
@@ -24,12 +24,5 @@
     <ProjectReference Include="..\CleanArchitecture.Application\CleanArchitecture.Application.csproj" />
     <ProjectReference Include="..\CleanArchitecture.Infrastructure\CleanArchitecture.Infrastructure.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Update="CleanArchitecture.WebApi.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-
+    
 </Project>
