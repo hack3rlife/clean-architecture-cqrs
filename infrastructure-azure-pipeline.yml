@@ -9,11 +9,23 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+parameters:
+  - name: AppName
+    displayName: "Application Name. (e.g.: BlogWebAPI)"
+    type: string
+    default: BlogWebAPI
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+steps:
+- task: CloudFormationCreateOrUpdateStack@1
+  inputs:
+    awsCredentials: 'AWS_CONNECTION'
+    regionName: 'us-west-1'
+    stackName: 'BlogWebApiCqrs'
+    templateSource: 'url'
+    templateUrl: 'https://github.com/hack3rlife/aws-cloudfront-templates/blob/main/BeanStalkDotnetCoreApplication/dotnet-core-webapi.yml'
+    templateParametersSource: 'inline'
+    templateParameters: |
+      - ParameterKey: AppName
+        ParameterValue: ${{parameters.AppName}}
+    logRequest: true
+    logResponse: true
