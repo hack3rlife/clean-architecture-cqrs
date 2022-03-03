@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
+using CleanArchitecture.WebApi.EndToEndTests.Infrastructure;
 
 namespace CleanArchitecture.WebApi.EndToEndTests
 {
@@ -25,10 +26,26 @@ namespace CleanArchitecture.WebApi.EndToEndTests
                 })
                 .ConfigureTestServices(testServices =>
                 {
+                    testServices.AddTransient<LoggingHandler>();
+
+                    testServices
+                        .AddHttpClient<EndToEndClient>()
+                        .ConfigureHttpMessageHandlerBuilder(x =>
+                        {
+                            //attach testserver handler to the httpclient so request doesn't fail when running locally
+                            //https://lurumad.github.io/integration-tests-in-aspnet-core-signalr
+                            x.PrimaryHandler = Server.CreateHandler();
+                        })
+                        .AddHttpMessageHandler<LoggingHandler>();
+
+                    
+                    testServices.AddSingleton<EndToEndClientFactory>();
+                    testServices.AddSingleton<BlogServiceClient>();
+
                     var guid = Guid.NewGuid().ToString();
                     testServices.AddDbContext<BlogDbContext>(c => c.UseInMemoryDatabase(guid).EnableDetailedErrors());
 
-                    IServiceProvider serviceProvider = testServices.BuildServiceProvider();
+                    var serviceProvider = testServices.BuildServiceProvider();
                     var scope = serviceProvider.CreateScope();
                     var blogDbContext = scope.ServiceProvider.GetRequiredService<BlogDbContext>();
 
